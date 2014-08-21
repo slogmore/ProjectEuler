@@ -9,16 +9,34 @@ def is_prime(number):
 			return False
 	return True
 
+#Brute Force Method
+def brute_force_method(number):
+	divide_with = 1
+	while True:
+		if (float(number) / divide_with).is_integer():
+			if is_prime(number / divide_with):
+				return number / divide_with
+		divide_with += 2
+	return None
+
+#An optimized method
+def optimized_method(number):
+	i = 2
+	while i**2 <= number:
+	    if number % i == 0:
+	        number = number / i
+	        largest = i
+	    else:
+	        i += 1
+	if number > largest: 
+		return number
+	return largest
+
+
 def main():
 	to_factorize = 600851475143
-	found = False
-	divide_with = 1
-	while not found:
-		if (float(to_factorize) / divide_with).is_integer():
-			if is_prime(to_factorize / divide_with):
-				print to_factorize / divide_with
-				found = True
-		divide_with += 2
+	print optimized_method(to_factorize)
+	print brute_force_method(to_factorize)
 
 if __name__=="__main__":
 	main()
