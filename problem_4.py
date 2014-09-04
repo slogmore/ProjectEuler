@@ -1,7 +1,5 @@
 
 
-from math import sqrt
-
 
 def is_palindrome(string):
 	str_length = len(string) - 1
@@ -18,7 +16,7 @@ def main():
 			if number1 * number2 > max_product:
 				if is_palindrome(product_as_str):
 					max_product = number1 * number2
-					print product_as_str
+	print max_product
 
 
 if __name__=="__main__":

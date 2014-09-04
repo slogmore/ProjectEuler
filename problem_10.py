@@ -12,14 +12,13 @@ class SieveOfEratothense:
  		self.data = [i for i in range(0, self.max_range+1)]
  		self.data_length = len(self.data)
  		self.data[1] = 0
- 		print "Sieve Initialized"
-
+ 		
  	def runSieve(self):
  		index = 2
  		completed = False
  		while not completed:
 			p = self.data[index]  
-			self.deleteMultiples(p)
+			self.markMultiples(p)
 			index = self.findNextP(index)
 			print index
 			if index == -1:
@@ -31,7 +30,7 @@ class SieveOfEratothense:
 				return i
 		return -1
 
- 	def deleteMultiples(self, p):
+ 	def markMultiples(self, p):
  		count = 2
  		p_product = p * count
  		while p_product < self.data_length:
@@ -42,11 +41,12 @@ class SieveOfEratothense:
 	def printSieve(self):
 		print self.data
 
-	def sumOf(self):
-		return reduce(operator.add, self.data)
+	def getSumOf(self):
+		return sum(self.data)
+
 def main():
 	sieve = SieveOfEratothense(2000000)
-	print sieve.sumOf()
+	print sieve.getSumOf()
 	
 if __name__=="__main__":
 	main()

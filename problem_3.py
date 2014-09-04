@@ -16,7 +16,7 @@ def brute_force_method(number):
 		if (float(number) / divide_with).is_integer():
 			if is_prime(number / divide_with):
 				return number / divide_with
-		divide_with += 2
+		divide_with += 1
 	return None
 
 #An optimized method
@@ -36,7 +36,7 @@ def optimized_method(number):
 def main():
 	to_factorize = 600851475143
 	print optimized_method(to_factorize)
-	print brute_force_method(to_factorize)
+	print brute_force_method(10000)
 
 if __name__=="__main__":
 	main()

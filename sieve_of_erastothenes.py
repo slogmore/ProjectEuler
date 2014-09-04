@@ -13,8 +13,6 @@ class SieveOfEratothense:
  		self.data = [i for i in range(0, self.max_range+1)]
  		self.data_length = len(self.data)
  		self.data[1] = 0
- 		print "Sieve Initialized"
-
  	def runSieve(self):
  		index = 2
  		completed = False
@@ -24,8 +22,7 @@ class SieveOfEratothense:
 			index = self.findNextP(index)
 			if index == -1:
 				completed = True
-		print "Sieve built"
-
+	
 	def getCleanSieve(self):
 		return [i for i in self.data if i != 0]
 
@@ -48,46 +45,4 @@ class SieveOfEratothense:
 
 	def sumOf(self):
 		return reduce(operator.add, self.data)
-
-sieve = SieveOfEratothense(10000)
-prime_list = sieve.getCleanSieve()
-def prime_generator():
-	for prime in prime_list:
-		yield prime
-
-def triangle_number_generator(term):
-	while True: 
-		yield sum(range(1, term + 1))
-		term += 1
-
-def prime_factorization(number):
-	factors = []
-	primes = prime_generator() 
-	for prime in primes: 
-		while number % prime == 0:
-			factors.append(prime)
-			number = number / prime
-	return factors
-
-def factors_count(factors):
-	to_count = list(set(factors))
-	counts = []
-	for i in to_count:
-		counts.append(factors.count(i) + 1)
-	return counts
-
-def main():
-	triangle_numbers = triangle_number_generator(28)
-	
-	for num in triangle_numbers: 
-		prime_factors = prime_factorization(num)
-		num_of_factors = factors_count(prime_factors)
-		print num, num_of_factors
-		if reduce(operator.mul, num_of_factors) > 500: 
-			break
-
-if __name__=="__main__":
-	main()
-
-
 
